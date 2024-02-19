@@ -1,7 +1,7 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
-const { languages, defaultLanguage } = require('./src/common/languages')
+const { languages, defaultLanguage } = require('./src/common/Languages')
 
 module.exports = {
   siteMetadata: {

@@ -1,5 +1,5 @@
 const { join } = require('path');
-const { readFileSync, lstatSync, readdirSync } = require('fs');
+const { lstatSync, readdirSync } = require('fs');
 
 const defaultLanguage = 'en';
 
