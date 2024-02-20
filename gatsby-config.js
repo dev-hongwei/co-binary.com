@@ -13,8 +13,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/locales`,
-        name: `locale`
-      }
+        name: `locale`,
+      },
     },
     {
       resolve: `gatsby-plugin-react-i18next`,
@@ -34,7 +34,7 @@ module.exports = {
           nsSeparator: false,
         },
         pages: [],
-      }
+      },
     },
   ],
 }

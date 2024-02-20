@@ -1,14 +1,16 @@
-import * as React from "react"
-import { graphql } from "gatsby"
-import { Trans, useTranslation } from "gatsby-plugin-react-i18next"
-import Layout from "../components/Layout"
+import * as React from 'react'
+import { graphql } from 'gatsby'
+import { Trans, useTranslation } from 'gatsby-plugin-react-i18next'
+import Layout from '../components/Layout'
 
 const IndexPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <Layout>
-      <p><Trans>homePage</Trans></p>
+      <p>
+        <Trans>homePage</Trans>
+      </p>
       <p>{t('homePage')}</p>
     </Layout>
   )
@@ -16,7 +18,9 @@ const IndexPage = () => {
 
 export const query = graphql`
   query ($language: String!) {
-    locales: allLocale(filter: {ns: {in: ["index"]}, language: {eq: $language}}) {
+    locales: allLocale(
+      filter: { ns: { in: ["index"] }, language: { eq: $language } }
+    ) {
       edges {
         node {
           ns
@@ -31,4 +35,3 @@ export const query = graphql`
 export default IndexPage
 
 export const Head = () => <title>Home Page</title>
-
