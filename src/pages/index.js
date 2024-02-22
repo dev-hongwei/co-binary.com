@@ -2,6 +2,7 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import { Trans, useTranslation } from 'gatsby-plugin-react-i18next'
 import Layout from '../components/Layout'
+import { SEO } from '../components/SEO'
 
 const IndexPage = () => {
   const { t } = useTranslation()
@@ -34,4 +35,6 @@ export const query = graphql`
 
 export default IndexPage
 
-export const Head = () => <title>Home Page</title>
+export const Head = () => {
+  return <SEO title="Home Page" />
+}

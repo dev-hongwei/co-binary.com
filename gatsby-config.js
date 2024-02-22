@@ -5,7 +5,9 @@ const { languages, defaultLanguage } = require('./src/common/Languages')
 
 module.exports = {
   siteMetadata: {
-    title: `co-binary`,
+    title: `Co-Binary`,
+    description: `Collboration Binary World, my personal digital garden.`,
+    image: `/logo.png`,
     siteUrl: `https://www.co-binary.com`,
   },
   plugins: [
