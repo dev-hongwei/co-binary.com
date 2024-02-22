@@ -9,6 +9,7 @@ module.exports = {
     siteUrl: `https://www.co-binary.com`,
   },
   plugins: [
+    'gatsby-plugin-postcss',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
