@@ -1,3 +1,7 @@
 {
-  "homePage": "This is the home page"
+  "homePage": "This is the home page",
+  "nav-home": "Home",
+  "nav-blogs": "Blogs",
+  "nav-tools": "Tools",
+  "nav-about": "About"
 }

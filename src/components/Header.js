@@ -1,10 +1,11 @@
 import React from 'react'
+import Navigation from './Navigation'
 import LanguageSwitcher from './LanguageSwitcher'
 
-const Header = ({ siteTitle }) => {
+const Header = () => {
   return (
     <header className="main-header">
-      <p>{siteTitle}</p>
+      <Navigation />
       <LanguageSwitcher />
     </header>
   )

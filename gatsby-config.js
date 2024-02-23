@@ -7,7 +7,7 @@ module.exports = {
   siteMetadata: {
     title: `Co-Binary`,
     description: `Collboration Binary World, my personal digital garden.`,
-    image: `/logo.png`,
+    image: `/icon.ico`,
     siteUrl: `https://www.co-binary.com`,
   },
   plugins: [

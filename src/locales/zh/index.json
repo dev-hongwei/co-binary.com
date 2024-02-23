@@ -1,3 +1,7 @@
 {
-  "homePage": "这里是主页"
+  "homePage": "这里是主页",
+  "nav-home": "主页",
+  "nav-blogs": "博文",
+  "nav-tools": "工具",
+  "nav-about": "关于"
 }
