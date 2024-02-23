@@ -13,8 +13,7 @@ const LanguageSwitcher = () => {
               to={originalPath}
               language={lng}
               style={{
-                textDecoration:
-                  i18n.resolvedLanguage === lng ? 'underline' : 'none',
+                display: i18n.resolvedLanguage === lng ? 'none' : 'block',
               }}
             >
               {LanugageDictionary[lng]}
