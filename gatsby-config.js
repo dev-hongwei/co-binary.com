@@ -10,6 +10,9 @@ module.exports = {
     image: `/icon.ico`,
     siteUrl: `https://www.co-binary.com`,
   },
+  flags: {
+    DEV_SSR: true,
+  },
   plugins: [
     'gatsby-plugin-postcss',
     {

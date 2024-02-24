@@ -91,9 +91,9 @@ a {
 .main-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--binner-background-color);
   border-bottom: 1px solid var(--binner-bottom-color);
-  padding: var(--space-large);
   font-size: var(--font-size-headering);
 }
 
@@ -101,9 +101,8 @@ a {
 .nav {
   display: flex;
   justify-content: flex-start;
-  padding: 0;
+  padding: 0 0 0 var(--space-medium);
   text-align: center;
-  margin-left: var(--space-medium-negative);
 }
 
 .nav-item {
@@ -146,4 +145,5 @@ a {
 
 /* Language Switcher */
 .language-switcher {
+  padding: 0 var(--space-large) 0 0;
 }
