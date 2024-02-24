@@ -16,27 +16,13 @@
   --gray-9: #1f1f1f;
   --gray-10: #181818;
 
-  --green: #5eddac;
-  --orange: #ff7e22;
-  --yellow: #fca62a;
-  --light-yellow: #f6cd5d;
-  --pink: #f57ad0;
-  --lavendar: #9b78fa;
-  --violet: #ff67f7;
-  --blue: #59abf7;
-  --purple: #673ece;
-  --indigo: #5a43f1;
-  --indigo-dark: #4509cf;
-  --indigo-light: #969bf6;
-  --indigo-muted: #f1f2fd;
+  --light-blue: #0593d3;
+  --dark-blue: #0482ba;
 
   /* Font family */
   --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont,
     'Helvetica Neue', Arial, sans-serif;
-  --font-family-monospace: Menlo, 'IBM Plex Mono', Menlo, monospace;
   --font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont,
-    'Helvetica Neue', Arial, sans-serif;
-  --font-family-nav: 'Inter', -apple-system, BlinkMacSystemFont,
     'Helvetica Neue', Arial, sans-serif;
 
   /* Font color */
@@ -47,6 +33,10 @@
   --font-color-bright: var(--gray-9);
   --font-color-hero-heading: var(--gray-0);
 
+  /* Font size */
+  --font-size-headering: 18px;
+  --font-size-normal: 16px;
+
   /* Borders */
   --border-color: var(--gray-3);
   --border-color-hover: var(--gray-4);
@@ -54,34 +44,16 @@
 
   /* Elements */
   --background-color: white;
-  --card-background-color: var(--gray-0);
-  --button-background-color: var(--gray-05);
-  --marker: var(--border-color-hover);
-  --link: var(--indigo);
-  --link-hover-color: var(--indigo-muted);
-  --navbar: var(--gray-1);
-  --navbar-border: var(--gray-2);
-  --navbar-color: var(--gray-8);
-  --navbar-color-hover: var(--gray-9);
-  --navbar-background-hover: var(--gray-1);
-  --year: var(--green);
-  --star: var(--yellow);
-  --post-time-color: var(--gray-6);
-  --card-time-color: var(--gray-5);
-  --project-time-color: var(--font-color-muted);
-  --highlight-color: var(--green);
-  --blockquote-background: var(--indigo-muted);
-  --file-background: #eee;
-  --inline-code-background-color: var(--gray-0);
-  --category-link: #dd4eb2;
-  --scrollbar-color: var(--gray-3);
-  --scrollbar-track: var(--gray-4);
+  --binner-background-color: var(--light-blue);
+  --binner-bottom-color: var(--dark-blue);
 
   /* Sizs */
-  --content-width: 780px;
-  --content-width--small: 560px;
-  --content-width--medium: 700px;
-  --navbar-height-small: 60px;
+  --space-small: 5px;
+  --space-small-negative: -5px;
+  --space-medium: 10px;
+  --space-medium-negative: -10px;
+  --space-large: 20px;
+  --space-large-negative: -20px;
 }
 
 *,
@@ -96,7 +68,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 
   line-height: 1.6;
-  font-size: 16px;
+  font-size: var(--font-size-normal);
   font-weight: normal;
   font-kerning: normal;
 }
@@ -108,73 +80,44 @@ body {
 }
 
 a {
-  color: var(--link);
   text-decoration: none;
 }
-
-p,
-ul,
-ol,
-ul,
-table,
-blockquote {
-  font-size: 1rem;
-  color: var(--font-color-base);
-}
-
-@media screen and (min-width: 700px) {
-  p,
-  ul,
-  ol,
-  ul,
-  table,
-  blockquote {
-    letter-spacing: -0.01rem;
-    font-size: 1.1rem;
-    line-height: 1.625;
-  }
-}
-
 
 /* Header */
 .main-header {
     display: flex;
     justify-content: space-between;
+    background-color: var(--binner-background-color);
+    border-bottom: 1px solid var(--binner-bottom-color);
+    padding: var(--space-large);
+    font-size: var(--font-size-headering);
 }
 
 /* Navigation */
-.nav-container {
+.nav {
     display: flex;
     justify-content: flex-start;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-left: var(--space-medium-negative);
 }
 
-/* Language Switcher */
-.language-switcher {
-    display: flex;
-    justify-content: flex-end;
+.nav-item {
 }
-ul { 
-  padding: 0; 
-  list-style: none; 
-  display: table;
-  width: 600px;
-  text-align: center;
-}
-li { 
-  display: table-cell; 
-  position: relative; 
-  padding: 15px 0;
-}
-a {
+
+.nav a {
+  color: white;
   text-transform: uppercase;
-  text-decoration: none;
+  font-family: var(--font-family-heading);
   letter-spacing: 0.15em;
-  
-  display: inline-block;
-  padding: 10px;
   position: relative;
+  padding: var(--space-medium);
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
 }
-a:after {    
+.nav a:after {    
   background: none repeat scroll 0 0 transparent;
   bottom: 0;
   content: "";
@@ -182,11 +125,23 @@ a:after {
   height: 2px;
   left: 50%;
   position: absolute;
-  background: var(--gray-10);
+  background: var(--gray-0);
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
-a:hover:after { 
+.nav a:hover:after { 
   width: 100%; 
   left: 0; 
+}
+
+.nav img {
+    width: var(--font-size-headering);
+    height: var(--font-size-headering);
+    margin-right: var(--space-small);
+}
+
+/* Language Switcher */
+.language-switcher {
+    display: flex;
+    justify-content: flex-end;
 }
