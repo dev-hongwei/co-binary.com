@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link, useI18next } from 'gatsby-plugin-react-i18next'
 import LanugageDictionary from '../common/LanguageDictionary'
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher = ({ onWidthChange }) => {
   const { languages, originalPath, i18n } = useI18next()
+  const ref = useRef(null)
+
+  useEffect(() => {
+    if (ref.current) {
+      const newWidth = ref.current.offsetWidth
+      onWidthChange(newWidth)
+    }
+  }, [onWidthChange])
+
   return (
-    <ul className="language-switcher">
+    <ul ref={ref} className="language-switcher">
       {languages.map((lng) => {
         return (
           <li key={lng}>

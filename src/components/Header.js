@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navigation from './Navigation'
 import LanguageSwitcher from './LanguageSwitcher'
 
 const Header = () => {
+  const [langSwitcherWidth, setLangSwitcherWidth] = useState(0)
+
+  const handleLangSwitcherWidthChange = (newWidth) => {
+    setLangSwitcherWidth(newWidth)
+  }
   return (
     <header className="main-header">
-      <Navigation />
-      <LanguageSwitcher />
+      <Navigation otherComponentsWidth={langSwitcherWidth} />
+      <LanguageSwitcher onWidthChange={handleLangSwitcherWidthChange} />
     </header>
   )
 }

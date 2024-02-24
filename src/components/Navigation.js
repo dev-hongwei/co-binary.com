@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-// import { Link } from 'gatsby'
-import { Link, Trans, useTranslation } from 'gatsby-plugin-react-i18next'
+import { Trans, useTranslation } from 'gatsby-plugin-react-i18next'
 
 const navigationItems = [
   {
@@ -17,7 +16,7 @@ const navigationItems = [
   },
 ]
 
-const Navigation = () => {
+const Navigation = ({ otherComponentsWidth }) => {
   const { t } = useTranslation()
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [showMore, setShowMore] = useState(false)
@@ -37,7 +36,7 @@ const Navigation = () => {
   useEffect(() => {
     let itemsToShow = navigationItems
     let itemsToHide = []
-    const navbarWidth = windowWidth
+    const navbarWidth = windowWidth - otherComponentsWidth
 
     if (navbarWidth < 768) {
       itemsToShow = navigationItems.slice(0, 2)
@@ -45,7 +44,7 @@ const Navigation = () => {
     }
     setShowMore(itemsToHide.length > 0)
     setVisibleItems(itemsToShow)
-  }, [windowWidth])
+  }, [windowWidth, otherComponentsWidth])
 
   return (
     <ul className="nav">
@@ -64,7 +63,7 @@ const Navigation = () => {
       })}
       {showMore && (
         <li className="nav-item more">
-          <a href="#">More</a>
+          <a href="#">{t(`nav-more`)}</a>
           <ul className="sub-nav">
             {navigationItems.slice(visibleItems.length).map((navItem) => {
               return (

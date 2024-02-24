@@ -79,6 +79,10 @@ body {
   background: var(--background-color);
 }
 
+ul {
+  list-style: none;
+}
+
 a {
   text-decoration: none;
 }
@@ -97,7 +101,6 @@ a {
 .nav {
   display: flex;
   justify-content: flex-start;
-  list-style: none;
   padding: 0;
   text-align: center;
   margin-left: var(--space-medium-negative);
@@ -135,7 +138,6 @@ a {
   width: 100%;
   left: 0;
 }
-
 .nav img {
   width: var(--font-size-headering);
   height: var(--font-size-headering);
@@ -144,6 +146,4 @@ a {
 
 /* Language Switcher */
 .language-switcher {
-  display: flex;
-  justify-content: flex-end;
 }
