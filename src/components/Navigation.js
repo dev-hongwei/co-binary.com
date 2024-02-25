@@ -14,18 +14,6 @@ const navigationItems = [
     id: 'nav-about',
     path: 'about',
   },
-  {
-    id: 'nav-about1',
-    path: 'about',
-  },
-  {
-    id: 'nav-about2',
-    path: 'about',
-  },
-  {
-    id: 'nav-about3',
-    path: 'about',
-  },
 ]
 
 const Navigation = ({ otherComponentsWidth }) => {
@@ -109,23 +97,34 @@ const Navigation = ({ otherComponentsWidth }) => {
         )
       })}
       {showMore && (
-        <li className="nav-item more">
-          <a href="#">{t(`nav-more`)}</a>
-          <ul className="sub-nav">
-            {navigationItems.slice(visibleItems.length).map((navItem) => {
-              return (
-                <li key={navItem.id}>
-                  <a href={navItem.path}>
-                    <img
-                      src={`../images/${navItem.id}.svg`}
-                      alt={t(`${navItem.id}`)}
-                    />
-                    <Trans>{`${navItem.id}`}</Trans>
-                  </a>
-                </li>
-              )
-            })}
-          </ul>
+        <li className="nav-item nav-item-more">
+          <a href="#">
+            {t(`nav-more`)}
+            <img src="../images/nav-more.svg" alt={t(`nav-more`)} />
+          </a>
+          <div className="sub-nav-container">
+            <ul className="sub-nav">
+              {navigationItems.slice(visibleItems.length).map((navItem) => {
+                return (
+                  <li key={navItem.id} className="sub-nav-item">
+                    <a href={navItem.path}>
+                      <img
+                        className="sub-nav-reverse-img"
+                        src={`../images/${navItem.id}-reverse-color.svg`}
+                        alt={t(`${navItem.id}`)}
+                      />
+                      <img
+                        className="sub-nav-img"
+                        src={`../images/${navItem.id}.svg`}
+                        alt={t(`${navItem.id}`)}
+                      />
+                      <Trans>{`${navItem.id}`}</Trans>
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
         </li>
       )}
     </ul>

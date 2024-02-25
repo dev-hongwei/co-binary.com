@@ -32,6 +32,8 @@
   --font-color-heading3: var(--gray-7);
   --font-color-bright: var(--gray-9);
   --font-color-hero-heading: var(--gray-0);
+  --font-color-first-level-nav-item: white;
+  --font-color-second-level-nav-item: unset;
 
   /* Font size */
   --font-size-headering: 18px;
@@ -46,6 +48,8 @@
   --background-color: white;
   --binner-background-color: var(--light-blue);
   --binner-bottom-color: var(--dark-blue);
+  --second-level-nav-item-background-color: white;
+  --second-level-nav-item-bottom-color:var(--gray-3);
 
   /* Sizs */
   --space-small: 5px;
@@ -105,11 +109,8 @@ a {
   text-align: center;
 }
 
-.nav-item {
-}
-
 .nav a {
-  color: white;
+  color: var(--font-color-first-level-nav-item);
   text-transform: uppercase;
   font-family: var(--font-family-heading);
   letter-spacing: 0.15em;
@@ -143,8 +144,42 @@ a {
   margin-right: var(--space-small);
 }
 
-.sub-nav {
+.nav-item-more a:after {
+  display: none; /* don't show the underline of the more menu*/
+}
+.sub-nav-container {
   display: none;
+  position: absolute;
+  width: 200px;
+  border-radius: 4px;
+  padding: 15px 0;
+  background-color: var(--second-level-nav-item-background-color);
+  border: 1px solid var(--second-level-nav-item-bottom-color);
+}
+.nav-item-more:hover .sub-nav-container {
+  display: block;
+}
+.sub-nav {
+  padding: 0;
+}
+.sub-nav a {
+  color: var(--font-color-second-level-nav-item);
+}
+.sub-nav-item {
+  font-size: var(--font-size-normal);
+}
+.sub-nav-item:hover a {
+  color: var(--font-color-first-level-nav-item);
+  background-color: var(--binner-background-color);
+}
+.sub-nav-img {
+  display: none;
+}
+.sub-nav-item:hover .sub-nav-reverse-img {
+  display: none;
+}
+.sub-nav-item:hover .sub-nav-img {
+  display: block;
 }
 
 /* Language Switcher */
