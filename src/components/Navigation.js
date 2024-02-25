@@ -15,26 +15,6 @@ const navigationItems = [
     id: 'nav-about',
     path: 'about',
   },
-  {
-    id: 'nav-about5',
-    path: 'about',
-  },
-  {
-    id: 'nav-about4',
-    path: 'about',
-  },
-  {
-    id: 'nav-about3',
-    path: 'about',
-  },
-  {
-    id: 'nav-about2',
-    path: 'about',
-  },
-  {
-    id: 'nav-about1',
-    path: 'about',
-  },
 ]
 
 const Navigation = ({ otherComponentsWidth }) => {
