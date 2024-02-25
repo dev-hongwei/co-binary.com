@@ -71,7 +71,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  line-height: 1.6;
   font-size: var(--font-size-normal);
   font-weight: normal;
   font-kerning: normal;
@@ -184,6 +183,19 @@ a {
 
 /* Language Switcher */
 .language-switcher {
-  padding: 0 var(--space-large) 0 0;
-  white-space: nowrap;
+  padding: 0 var(--space-medium) 0 0;
+}
+.language-switcher a {
+  text-transform: unset;
+  padding: var(--space-small);
+}
+.language-switcher img {
+  margin: 0;
+}
+.language-switcher a:after {
+  display: none; /* don't show the underline of the language switch icon*/
+}
+.language-switcher:hover .sub-nav-container {
+  display: block;
+  right: 20px;
 }
