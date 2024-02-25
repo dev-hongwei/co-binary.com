@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Trans, useTranslation } from 'gatsby-plugin-react-i18next'
-import Threshold from '../common/threshold'
+import Threshold from '../common/Threshold'
 
 const navigationItems = [
   {
