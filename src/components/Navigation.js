@@ -24,7 +24,7 @@ const Navigation = ({ otherComponentsWidth }) => {
   const [showMore, setShowMore] = useState(false)
   const [visibleItems, setVisibleItems] = useState(navigationItems)
   const navItemRefs = useRef([])
-  const navMoreReseveWidth = 85
+  const navMoreReseveWidth = 110
 
   useEffect(() => {
     // set window width

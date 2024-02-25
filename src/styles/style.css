@@ -150,7 +150,7 @@ a {
 .sub-nav-container {
   display: none;
   position: absolute;
-  width: 200px;
+  width: 120px;
   border-radius: 4px;
   padding: 15px 0;
   background-color: var(--second-level-nav-item-background-color);
