@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Trans, useTranslation } from 'gatsby-plugin-react-i18next'
 
 const navigationItems = [
@@ -14,15 +14,35 @@ const navigationItems = [
     id: 'nav-about',
     path: 'about',
   },
+  {
+    id: 'nav-about1',
+    path: 'about',
+  },
+  {
+    id: 'nav-about2',
+    path: 'about',
+  },
+  {
+    id: 'nav-about3',
+    path: 'about',
+  },
 ]
 
 const Navigation = ({ otherComponentsWidth }) => {
   const { t } = useTranslation()
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : 0,
+  )
   const [showMore, setShowMore] = useState(false)
-  const [visibleItems, setVisibleItems] = useState([])
+  const [visibleItems, setVisibleItems] = useState(navigationItems)
+  const navItemRefs = useRef([])
+  const navMoreReseveWidth = 85
 
   useEffect(() => {
+    // set window width
+    if (typeof window === 'undefined') {
+      return
+    }
     const handleResize = () => {
       setWindowWidth(window.innerWidth)
     }
@@ -34,23 +54,50 @@ const Navigation = ({ otherComponentsWidth }) => {
   }, [])
 
   useEffect(() => {
-    let itemsToShow = navigationItems
-    let itemsToHide = []
+    console.log('Set navigation items width')
+    navItemRefs.current.forEach((navItemRef, index) => {
+      if (navItemRef) {
+        navigationItems[index].width = navItemRef.offsetWidth
+      }
+    })
+  }, [])
+
+  useEffect(() => {
+    // calculate visible navigation items
+    let itemsToShow = []
     const navbarWidth = windowWidth - otherComponentsWidth
 
-    if (navbarWidth < 768) {
-      itemsToShow = navigationItems.slice(0, 2)
-      itemsToHide = navigationItems.slice(2)
+    let addedItemWidth = 0
+    const BreakException = {}
+    try {
+      navigationItems.forEach((navItem, index) => {
+        addedItemWidth += navItem.width
+        if (
+          addedItemWidth > navbarWidth - navMoreReseveWidth ||
+          (index + 1 == navigationItems.length && addedItemWidth > navbarWidth)
+        ) {
+          throw BreakException
+        }
+        itemsToShow.push(navigationItems[index])
+      })
+    } catch (e) {
+      if (e !== BreakException) {
+        throw e
+      }
     }
-    setShowMore(itemsToHide.length > 0)
+    setShowMore(itemsToShow.length < navigationItems.length)
     setVisibleItems(itemsToShow)
   }, [windowWidth, otherComponentsWidth])
 
   return (
     <ul className="nav">
-      {visibleItems.map((navItem) => {
+      {visibleItems.map((navItem, index) => {
         return (
-          <li key={navItem.id} className="nav-item">
+          <li
+            key={navItem.id}
+            className="nav-item"
+            ref={(el) => (navItemRefs.current[index] = el)}
+          >
             <a href={navItem.path}>
               <img
                 src={`../images/${navItem.id}.svg`}

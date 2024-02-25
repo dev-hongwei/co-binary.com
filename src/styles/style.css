@@ -143,7 +143,12 @@ a {
   margin-right: var(--space-small);
 }
 
+.sub-nav {
+  display: none;
+}
+
 /* Language Switcher */
 .language-switcher {
   padding: 0 var(--space-large) 0 0;
+  white-space: nowrap;
 }
