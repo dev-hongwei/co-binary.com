@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Trans, useTranslation } from 'gatsby-plugin-react-i18next'
+import Threshold from '../common/threshold'
 
 const navigationItems = [
   {
@@ -12,6 +13,26 @@ const navigationItems = [
   },
   {
     id: 'nav-about',
+    path: 'about',
+  },
+  {
+    id: 'nav-about5',
+    path: 'about',
+  },
+  {
+    id: 'nav-about4',
+    path: 'about',
+  },
+  {
+    id: 'nav-about3',
+    path: 'about',
+  },
+  {
+    id: 'nav-about2',
+    path: 'about',
+  },
+  {
+    id: 'nav-about1',
     path: 'about',
   },
 ]
@@ -55,22 +76,26 @@ const Navigation = ({ otherComponentsWidth }) => {
     let itemsToShow = []
     const navbarWidth = windowWidth - otherComponentsWidth
 
-    let addedItemWidth = 0
-    const BreakException = {}
-    try {
-      navigationItems.forEach((navItem, index) => {
-        addedItemWidth += navItem.width
-        if (
-          addedItemWidth > navbarWidth - navMoreReseveWidth ||
-          (index + 1 == navigationItems.length && addedItemWidth > navbarWidth)
-        ) {
-          throw BreakException
+    if (windowWidth >= Threshold.screenWidth) {
+      let addedItemWidth = 0
+      const BreakException = {}
+      try {
+        navigationItems.forEach((navItem, index) => {
+          addedItemWidth += navItem.width
+          if (
+            (index + 1 < navigationItems.length &&
+              addedItemWidth > navbarWidth - navMoreReseveWidth) ||
+            (index + 1 == navigationItems.length &&
+              addedItemWidth > navbarWidth)
+          ) {
+            throw BreakException
+          }
+          itemsToShow.push(navigationItems[index])
+        })
+      } catch (e) {
+        if (e !== BreakException) {
+          throw e
         }
-        itemsToShow.push(navigationItems[index])
-      })
-    } catch (e) {
-      if (e !== BreakException) {
-        throw e
       }
     }
     setShowMore(itemsToShow.length < navigationItems.length)
@@ -98,10 +123,21 @@ const Navigation = ({ otherComponentsWidth }) => {
       })}
       {showMore && (
         <li className="nav-item nav-item-more">
-          <a href="#">
-            {t(`nav-more`)}
-            <img src="../images/nav-more.svg" alt={t(`nav-more`)} />
-          </a>
+          {visibleItems.length === 0 && (
+            <a href="#">
+              <img
+                src="../images/nav-hamburger.svg"
+                alt={t(`nav-more`)}
+                className="nav-hamburger-img"
+              />
+            </a>
+          )}
+          {visibleItems.length > 0 && (
+            <a href="#">
+              {t(`nav-more`)}
+              <img src="../images/nav-more.svg" alt={t(`nav-more`)} />
+            </a>
+          )}
           <div className="sub-nav-container">
             <ul className="sub-nav">
               {navigationItems.slice(visibleItems.length).map((navItem) => {
