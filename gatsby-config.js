@@ -29,6 +29,7 @@ module.exports = {
         languages,
         defaultLanguage,
         siteUrl: `https://www.co-binary.com`,
+        trailingSlash: 'always',
         i18nextOptions: {
           fallbackLng: defaultLanguage,
           supportedLngs: languages,

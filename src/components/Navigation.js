@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Trans, useTranslation } from 'gatsby-plugin-react-i18next'
+import { Link, Trans, useTranslation } from 'gatsby-plugin-react-i18next'
 import Threshold from '../common/Threshold'
 
 const navigationItems = [
@@ -90,10 +90,10 @@ const Navigation = ({ otherComponentsWidth }) => {
             className="nav-item"
             ref={(el) => (navItemRefs.current[index] = el)}
           >
-            <a href={navItem.path}>
+            <Link to={navItem.path}>
               <img src={`/images/${navItem.id}.svg`} alt={t(`${navItem.id}`)} />
               <Trans>{`${navItem.id}`}</Trans>
-            </a>
+            </Link>
           </li>
         )
       })}
@@ -119,7 +119,7 @@ const Navigation = ({ otherComponentsWidth }) => {
               {navigationItems.slice(visibleItems.length).map((navItem) => {
                 return (
                   <li key={navItem.id} className="sub-nav-item">
-                    <a href={navItem.path}>
+                    <Link to={navItem.path}>
                       <img
                         className="sub-nav-reverse-img"
                         src={`/images/${navItem.id}-reverse-color.svg`}
@@ -131,7 +131,7 @@ const Navigation = ({ otherComponentsWidth }) => {
                         alt={t(`${navItem.id}`)}
                       />
                       <Trans>{`${navItem.id}`}</Trans>
-                    </a>
+                    </Link>
                   </li>
                 )
               })}
