@@ -9,11 +9,11 @@ const navigationItems = [
   },
   {
     id: 'nav-blogs',
-    path: 'blogs',
+    path: '/blogs',
   },
   {
     id: 'nav-about',
-    path: 'about',
+    path: '/about',
   },
 ]
 
@@ -43,7 +43,6 @@ const Navigation = ({ otherComponentsWidth }) => {
   }, [])
 
   useEffect(() => {
-    console.log('Set navigation items width')
     navItemRefs.current.forEach((navItemRef, index) => {
       if (navItemRef) {
         navigationItems[index].width = navItemRef.offsetWidth
@@ -92,10 +91,7 @@ const Navigation = ({ otherComponentsWidth }) => {
             ref={(el) => (navItemRefs.current[index] = el)}
           >
             <a href={navItem.path}>
-              <img
-                src={`../images/${navItem.id}.svg`}
-                alt={t(`${navItem.id}`)}
-              />
+              <img src={`/images/${navItem.id}.svg`} alt={t(`${navItem.id}`)} />
               <Trans>{`${navItem.id}`}</Trans>
             </a>
           </li>
@@ -106,7 +102,7 @@ const Navigation = ({ otherComponentsWidth }) => {
           {visibleItems.length === 0 && (
             <a href="#">
               <img
-                src="../images/nav-hamburger.svg"
+                src="/images/nav-hamburger.svg"
                 alt={t(`nav-more`)}
                 className="nav-hamburger-img"
               />
@@ -115,7 +111,7 @@ const Navigation = ({ otherComponentsWidth }) => {
           {visibleItems.length > 0 && (
             <a href="#">
               {t(`nav-more`)}
-              <img src="../images/nav-more.svg" alt={t(`nav-more`)} />
+              <img src="/images/nav-more.svg" alt={t(`nav-more`)} />
             </a>
           )}
           <div className="sub-nav-container">
@@ -126,12 +122,12 @@ const Navigation = ({ otherComponentsWidth }) => {
                     <a href={navItem.path}>
                       <img
                         className="sub-nav-reverse-img"
-                        src={`../images/${navItem.id}-reverse-color.svg`}
+                        src={`/images/${navItem.id}-reverse-color.svg`}
                         alt={t(`${navItem.id}`)}
                       />
                       <img
                         className="sub-nav-img"
-                        src={`../images/${navItem.id}.svg`}
+                        src={`/images/${navItem.id}.svg`}
                         alt={t(`${navItem.id}`)}
                       />
                       <Trans>{`${navItem.id}`}</Trans>

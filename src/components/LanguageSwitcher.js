@@ -18,7 +18,7 @@ const LanguageSwitcher = ({ onWidthChange }) => {
     <ul ref={ref} className="nav language-switcher">
       <li className="nav-item">
         <a href="#">
-          <img src="../images/globe.svg" alt={t(`nav-more`)} />
+          <img src="/images/globe.svg" alt={t(`nav-more`)} />
         </a>
         <div className="sub-nav-container">
           <ul className="sub-nav">
