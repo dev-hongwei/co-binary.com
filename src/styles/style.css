@@ -38,6 +38,7 @@
   /* Font size */
   --font-size-headering: 18px;
   --font-size-normal: 16px;
+  --font-size-footer: 14px;
 
   /* Borders */
   --border-color: var(--gray-3);
@@ -89,6 +90,12 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+.whole-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Header */
@@ -209,4 +216,23 @@ a {
 .language-switcher:hover .sub-nav-container {
   display: block;
   right: var(--space-large);
+}
+
+main {
+  flex-grow: 1;
+}
+
+.main-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--binner-bottom-color);
+  font-size: var(--font-size-footer);
+}
+
+.main-footer .nav-item {
+  display: flex;
+  align-items: center;
 }

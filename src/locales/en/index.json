@@ -4,5 +4,8 @@
   "nav-blogs": "Blogs",
   "nav-tools": "Tools",
   "nav-about": "About",
-  "nav-more": "More"
+  "nav-more": "More",
+  "footer-github-info": "Source code on: ",
+  "footer-gatsby-info": "Build with: ",
+  "footer-netlify-info": "Hosted on: "
 }

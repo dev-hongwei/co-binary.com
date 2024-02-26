@@ -4,5 +4,8 @@
   "nav-blogs": "博文",
   "nav-tools": "工具",
   "nav-about": "关于",
-  "nav-more": "更多"
+  "nav-more": "更多",
+  "footer-github-info": "源代码: ",
+  "footer-gatsby-info": "网站搭建: ",
+  "footer-netlify-info": "托管于: "
 }
