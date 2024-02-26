@@ -7,7 +7,7 @@ module.exports = {
   siteMetadata: {
     title: `Co-Binary`,
     description: `Collboration Binary World, my personal digital garden.`,
-    image: `/icon.ico`,
+    image: `icon.ico`,
     siteUrl: `https://www.co-binary.com`,
   },
   flags: {
@@ -28,7 +28,7 @@ module.exports = {
         localeJsonSourceName: `locale`,
         languages,
         defaultLanguage,
-        siteUrl: `http://localhost:8000/`,
+        siteUrl: `https://www.co-binary.com`,
         i18nextOptions: {
           fallbackLng: defaultLanguage,
           supportedLngs: languages,
