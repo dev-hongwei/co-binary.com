@@ -7,5 +7,6 @@
   "nav-more": "更多",
   "footer-github-info": "源代码: ",
   "footer-gatsby-info": "网站搭建: ",
-  "footer-netlify-info": "托管于: "
+  "footer-netlify-info": "托管于: ",
+  "building-page-placeholder": "页面创建中"
 }

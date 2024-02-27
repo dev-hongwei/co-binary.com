@@ -35,6 +35,11 @@ export const query = graphql`
 
 export default IndexPage
 
-export const Head = () => {
-  return <SEO title="Home Page" />
+export const Head = ({ data }) => {
+  const dataLanguage = data.locales.edges.find((e) => e.node.ns === 'index')
+    ?.node.data
+  const parsedDataLanguage = JSON.parse(dataLanguage)
+  const title = `${parsedDataLanguage['nav-home']}`
+
+  return <SEO title={title} />
 }
