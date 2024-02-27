@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { Trans, useTranslation } from 'gatsby-plugin-react-i18next'
 import Layout from '../components/Layout'
 import { SEO } from '../components/SEO'
+import { getI18nContent } from '../utils/helper'
 
 const IndexPage = () => {
   const { t } = useTranslation()
@@ -36,10 +37,6 @@ export const query = graphql`
 export default IndexPage
 
 export const Head = ({ data }) => {
-  const dataLanguage = data.locales.edges.find((e) => e.node.ns === 'index')
-    ?.node.data
-  const parsedDataLanguage = JSON.parse(dataLanguage)
-  const title = `${parsedDataLanguage['nav-home']}`
-
+  const title = getI18nContent(data, 'nav-home')
   return <SEO title={title} />
 }

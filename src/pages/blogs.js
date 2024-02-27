@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { Trans } from 'gatsby-plugin-react-i18next'
 import { SEO } from '../components/SEO'
 import Layout from '../components/Layout'
+import { getI18nContent } from '../utils/helper'
 
 const Blogs = () => {
   return (
@@ -33,9 +34,6 @@ export const query = graphql`
 export default Blogs
 
 export const Head = ({ data }) => {
-  const dataLanguage = data.locales.edges.find((e) => e.node.ns === 'index')
-    ?.node.data
-  const parsedDataLanguage = JSON.parse(dataLanguage)
-  const title = `${parsedDataLanguage['nav-blogs']}`
+  const title = getI18nContent(data, 'nav-blogs')
   return <SEO title={title} />
 }
