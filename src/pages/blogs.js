@@ -1,7 +1,9 @@
 import React from 'react'
+import { useI18next } from 'gatsby-plugin-react-i18next'
 import { graphql } from 'gatsby'
 import { SEO } from '../components/SEO'
 import Layout from '../components/Layout'
+import BlogList from '../components/BlogList'
 import { getI18nContent } from '../utils/helper'
 
 const Blogs = ({
@@ -9,16 +11,16 @@ const Blogs = ({
     allMarkdownRemark: { nodes },
   },
 }) => {
+  const blogPathfilter = `/content/${useI18next().language}/blog`
+  console.log(nodes)
+  const validNodes = nodes.filter(
+    (node) =>
+      !!node.frontmatter.title &&
+      node.fileAbsolutePath.includes(blogPathfilter),
+  )
   return (
     <Layout>
-      {nodes
-        .filter((node) => !!node.frontmatter.title)
-        .map((node) => (
-          <article key={node.id}>
-            <h2>{node.frontmatter.title}</h2>
-            <p>Posted: {node.frontmatter.date}</p>
-          </article>
-        ))}
+      <BlogList data={validNodes} />
     </Layout>
   )
 }
@@ -37,6 +39,7 @@ export const query = graphql`
     allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
       nodes {
         id
+        fileAbsolutePath
         excerpt(pruneLength: 250)
         frontmatter {
           date(formatString: "MMMM DD, YYYY")
