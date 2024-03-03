@@ -11,7 +11,7 @@ const Blogs = ({
     allMarkdownRemark: { nodes },
   },
 }) => {
-  const blogPathfilter = `/content/${useI18next().language}/blog`
+  const blogPathfilter = `${useI18next().language}.md`
   console.log(nodes)
   const validNodes = nodes.filter(
     (node) =>
@@ -54,6 +54,6 @@ export const query = graphql`
 export default Blogs
 
 export const Head = ({ data }) => {
-  const title = getI18nContent(data, 'nav-blogs')
+  const title = getI18nContent(data, 'nav-blog')
   return <SEO title={title} />
 }

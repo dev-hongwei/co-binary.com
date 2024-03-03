@@ -8,8 +8,8 @@ const navigationItems = [
     path: '/',
   },
   {
-    id: 'nav-blogs',
-    path: '/blogs',
+    id: 'nav-blog',
+    path: '/blog',
   },
   {
     id: 'nav-about',

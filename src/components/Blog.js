@@ -3,7 +3,7 @@ import { Link } from 'gatsby-plugin-react-i18next'
 
 const Blog = ({ node }) => {
   return (
-    <Link to={node.slug} key={node.id} className="post">
+    <Link to={node.frontmatter.slug} key={node.id} className="post">
       <h3>{node.frontmatter.title}</h3>
       <time>{node.frontmatter.date}</time>
     </Link>

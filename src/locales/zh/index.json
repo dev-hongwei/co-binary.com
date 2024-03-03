@@ -1,8 +1,7 @@
 {
   "homePage": "这里是主页",
   "nav-home": "主页",
-  "nav-blogs": "博文",
-  "nav-tools": "工具",
+  "nav-blog": "博文",
   "nav-about": "关于",
   "nav-more": "更多",
   "footer-github-info": "源代码: ",

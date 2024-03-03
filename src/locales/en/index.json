@@ -1,8 +1,7 @@
 {
   "homePage": "This is the home page",
   "nav-home": "Home",
-  "nav-blogs": "Blogs",
-  "nav-tools": "Tools",
+  "nav-blog": "Blog",
   "nav-about": "About",
   "nav-more": "More",
   "footer-github-info": "Source code on: ",
