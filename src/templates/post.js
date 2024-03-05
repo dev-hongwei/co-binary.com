@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { SEO } from '../components/SEO'
 import Layout from '../components/Layout'
-import { getI18nContent } from '../utils/helper'
 
 const Post = ({ data }) => {
   const post = data.markdownRemark
@@ -44,6 +43,6 @@ export const query = graphql`
 export default Post
 
 export const Head = ({ data }) => {
-  const title = getI18nContent(data, 'nav-blog')
+  const { title } = data.markdownRemark.frontmatter
   return <SEO title={title} />
 }
