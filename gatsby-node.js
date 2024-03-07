@@ -90,11 +90,12 @@ exports.createPages = async (props) => {
             frontmatter {
               title
               date
-              slug
             }
             fields {
-              locale
+              category
+              slug
               isDefault
+              locale
             }
           }
         }
@@ -108,8 +109,7 @@ exports.createPages = async (props) => {
   const all = result.data.allMarkdownRemark.edges
   const postList = all.filter((post) => !!post.node.frontmatter.title)
   postList.forEach((post) => {
-    const { slug } = post.node.frontmatter
-    const { isDefault } = post.node.fields
+    const { slug, isDefault } = post.node.fields
 
     const pageData = {
       path: `${slug}`,

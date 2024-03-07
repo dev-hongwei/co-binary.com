@@ -24,16 +24,11 @@ export const query = graphql`
         }
       }
     }
-    markdownRemark(
-      frontmatter: { slug: { eq: $slug } }
-      fields: { locale: { eq: $language } }
-    ) {
+    markdownRemark(fields: { slug: { eq: $slug }, locale: { eq: $language } }) {
       id
-      fileAbsolutePath
       excerpt(pruneLength: 250)
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
-        slug
         title
       }
     }

@@ -36,11 +36,13 @@ export const query = graphql`
     ) {
       nodes {
         id
+        fields {
+          slug
+        }
         fileAbsolutePath
         excerpt(pruneLength: 250)
         frontmatter {
           date(formatString: "MMMM DD, YYYY")
-          slug
           title
         }
       }

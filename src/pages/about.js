@@ -28,8 +28,7 @@ export const query = graphql`
       }
     }
     markdownRemark(
-      frontmatter: { slug: { eq: "/about" } }
-      fields: { locale: { eq: $language } }
+      fields: { slug: { eq: "/about" }, locale: { eq: $language } }
     ) {
       html
     }
