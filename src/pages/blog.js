@@ -31,7 +31,9 @@ export const query = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { fields: { locale: { eq: $language } } }
+      filter: {
+        fields: { category: { eq: "post" }, locale: { eq: $language } }
+      }
       sort: { frontmatter: { date: DESC } }
     ) {
       nodes {

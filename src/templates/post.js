@@ -14,7 +14,7 @@ const Post = ({ data }) => {
 }
 
 export const query = graphql`
-  query ($language: String!, $slug: String!) {
+  query ($category: String!, $slug: String!, $language: String!) {
     locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
@@ -24,7 +24,13 @@ export const query = graphql`
         }
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug }, locale: { eq: $language } }) {
+    markdownRemark(
+      fields: {
+        category: { eq: $category }
+        slug: { eq: $slug }
+        locale: { eq: $language }
+      }
+    ) {
       id
       excerpt(pruneLength: 250)
       frontmatter {

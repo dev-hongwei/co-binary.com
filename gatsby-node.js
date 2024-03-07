@@ -1,6 +1,11 @@
 const path = require('path')
 const { defaultLanguage } = require('./src/common/Languages')
 
+const ContentCategory = {
+  page: 'page',
+  post: 'post',
+}
+
 const getMatchStr = (strContent, regExpression) => {
   let matchStr
   if (strContent) {
@@ -23,13 +28,13 @@ const getMDFileSlug = (category, path) => {
   let slug
   if (path) {
     switch (category) {
-      case 'page': {
+      case ContentCategory.page: {
         // starts with 'page, ends with '.', but the match doesn't contain 'page' and '.'
         // design: there is no directory under the page directory, the `/${fileName}` is the slug of the page files
         const regex = /(?<=page)(?!page).*?(?=\.)/g
         return getMatchStr(path, regex)
       }
-      case 'post': {
+      case ContentCategory.post: {
         // starts with '/post', ends with 'index.', but the match doesn't contain 'index.'
         // design: a leaf directory's name is the post name, there are multiple index.{lang}.md files under the directory
         const regex = /\/post.*?(?=\/index.)/g
@@ -79,6 +84,7 @@ exports.onCreateNode = ({ node, actions }) => {
 exports.createPages = async (props) => {
   const { graphql, actions, reporter } = props
   const { createPage } = actions
+  const pageTemplate = require.resolve('./src/templates/page.js')
   const blogTemplate = require.resolve('./src/templates/post.js')
 
   const result = await graphql(`
@@ -86,11 +92,6 @@ exports.createPages = async (props) => {
       allMarkdownRemark {
         edges {
           node {
-            id
-            frontmatter {
-              title
-              date
-            }
             fields {
               category
               slug
@@ -106,18 +107,25 @@ exports.createPages = async (props) => {
   if (result.errors) {
     reporter.panicOnBuild('Error loading MD result', result.errors)
   }
-  const all = result.data.allMarkdownRemark.edges
-  const postList = all.filter((post) => !!post.node.frontmatter.title)
-  postList.forEach((post) => {
-    const { slug, isDefault } = post.node.fields
 
+  // create pages
+  const all = result.data.allMarkdownRemark.edges
+  all.forEach((page) => {
+    const { category, slug, isDefault, locale } = page.node.fields
     const pageData = {
       path: `${slug}`,
-      component: blogTemplate,
+      component:
+        category === ContentCategory.page ? pageTemplate : blogTemplate,
       context: {
+        category,
         slug,
       },
     }
-    if (isDefault) createPage(pageData)
+    if (
+      (category === ContentCategory.page && locale === defaultLanguage) ||
+      (category === ContentCategory.post && isDefault)
+    ) {
+      createPage(pageData)
+    }
   })
 }

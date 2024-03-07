@@ -2,9 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { SEO } from '../components/SEO'
 import Layout from '../components/Layout'
-import { getI18nContent } from '../utils/helper'
 
-const About = ({
+const Page = ({
   data: {
     markdownRemark: { html },
   },
@@ -17,7 +16,7 @@ const About = ({
 }
 
 export const query = graphql`
-  query ($language: String!) {
+  query ($category: String!, $slug: String!, $language: String!) {
     locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
@@ -28,16 +27,23 @@ export const query = graphql`
       }
     }
     markdownRemark(
-      fields: { slug: { eq: "/about" }, locale: { eq: $language } }
+      fields: {
+        category: { eq: $category }
+        slug: { eq: $slug }
+        locale: { eq: $language }
+      }
     ) {
       html
+      frontmatter {
+        title
+      }
     }
   }
 `
 
-export default About
+export default Page
 
 export const Head = ({ data }) => {
-  const title = getI18nContent(data, 'nav-about')
+  const { title } = data.markdownRemark.frontmatter
   return <SEO title={title} />
 }
