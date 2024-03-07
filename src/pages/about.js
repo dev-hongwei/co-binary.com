@@ -1,16 +1,17 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Trans } from 'gatsby-plugin-react-i18next'
 import { SEO } from '../components/SEO'
 import Layout from '../components/Layout'
 import { getI18nContent } from '../utils/helper'
 
-const About = () => {
+const About = ({
+  data: {
+    markdownRemark: { html },
+  },
+}) => {
   return (
     <Layout>
-      <p>
-        <Trans>building-page-placeholder</Trans>
-      </p>
+      <div dangerouslySetInnerHTML={{ __html: html }} />
     </Layout>
   )
 }
@@ -25,6 +26,12 @@ export const query = graphql`
           language
         }
       }
+    }
+    markdownRemark(
+      frontmatter: { slug: { eq: "/about" } }
+      fields: { locale: { eq: $language } }
+    ) {
+      html
     }
   }
 `
