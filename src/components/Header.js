@@ -10,8 +10,10 @@ const Header = () => {
   }
   return (
     <header className="main-header">
-      <Navigation otherComponentsWidth={langSwitcherWidth} />
-      <LanguageSwitcher onWidthChange={handleLangSwitcherWidthChange} />
+      <div className="main-header-container">
+        <Navigation otherComponentsWidth={langSwitcherWidth} />
+        <LanguageSwitcher onWidthChange={handleLangSwitcherWidthChange} />
+      </div>
     </header>
   )
 }
