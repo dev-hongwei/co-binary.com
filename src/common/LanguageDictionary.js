@@ -1,4 +1,4 @@
-const LanugageDictionary = {
+export const LanugageDictionary = {
   en: 'English',
   zh: '中文',
 }

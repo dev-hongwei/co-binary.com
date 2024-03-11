@@ -33,6 +33,7 @@
   --font-color-hero-heading: var(--gray-0);
   --font-color-first-level-nav-item: white;
   --font-color-second-level-nav-item: unset;
+  --post-time-color: var(--gray-6);
 
   /* Font size */
   --font-size-headering: 18px;
@@ -263,4 +264,49 @@ main a:hover {
 .main-footer .nav-item {
   display: flex;
   align-items: center;
+}
+
+/* Blog List Page */
+a.post {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.4rem 0;
+  background: transparent;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 500;
+}
+a.post:last-of-type {
+  border: none;
+}
+
+a.post:hover,
+a.post:hover h3 {
+  color: var(--font-color-bright);
+}
+
+a.post:hover h3 {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+}
+
+a.post h3 {
+  margin: 0;
+  font-size: var(--font-size-normal);
+  color: var(--font-color-muted);
+}
+
+a.post time {
+  display: block;
+  color: var(--post-time-color);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 700px) {
+  a.post time {
+    display: none;
+  }
 }

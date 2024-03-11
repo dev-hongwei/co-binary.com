@@ -1,20 +1,19 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { graphql } from 'gatsby'
 import { SEO } from '../components/SEO'
 import Layout from '../components/Layout'
 import BlogList from '../components/BlogList'
-import { getI18nContent } from '../utils/helper'
+import { getI18nContent, getSimplifiedPosts } from '../utils/helper'
 
 const Blogs = ({
   data: {
     allMarkdownRemark: { nodes },
   },
 }) => {
-  console.log(nodes)
-  const validNodes = nodes.filter((node) => !!node.frontmatter.title)
+  const simplifiedPosts = useMemo(() => getSimplifiedPosts(nodes), [nodes])
   return (
     <Layout>
-      <BlogList data={validNodes} />
+      <BlogList data={simplifiedPosts} />
     </Layout>
   )
 }
@@ -41,10 +40,8 @@ export const query = graphql`
         fields {
           slug
         }
-        fileAbsolutePath
-        excerpt(pruneLength: 250)
         frontmatter {
-          date(formatString: "MMMM DD, YYYY")
+          date
           title
         }
       }
