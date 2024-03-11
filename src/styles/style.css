@@ -175,7 +175,6 @@ a {
   padding: 15px 0;
   background-color: var(--color-second-level-nav-item-background);
   border: 1px solid var(--color-second-level-nav-item-bottom);
-  right: 0;
 }
 .nav-item-more:hover {
   background-color: var(--color-nav-item-highlight);
@@ -213,6 +212,9 @@ a {
 .language-switcher {
   padding: 0 var(--space-medium) 0 0;
 }
+.language-switcher .nav-item {
+  position: relative;
+}
 .language-switcher .nav-item:hover {
   background-color: var(--color-nav-item-highlight);
 }
@@ -228,6 +230,7 @@ a {
 }
 .language-switcher:hover .sub-nav-container {
   display: block;
+  right: 0;
 }
 
 main {
