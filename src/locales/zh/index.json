@@ -1,5 +1,6 @@
 {
-  "homePage": "这里是主页",
+  "homePageWelcomTitle": "您好，我是刘宏伟。",
+  "hongePageWelcomDetail": "我是一名软件开发者，撰写关于代码、设计、管理、生活等方面的文章。希望通过这个平台，能与广大技术爱好者共同探讨、学习和成长。欢迎来到我的数字世界。",
   "nav-home": "主页",
   "nav-blog": "博文",
   "nav-about": "关于",

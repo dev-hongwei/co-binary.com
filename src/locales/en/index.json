@@ -1,5 +1,6 @@
 {
-  "homePage": "This is the home page",
+  "homePageWelcomTitle": "Hi, I am Hongwei Liu.",
+  "hongePageWelcomDetail": "I am a software developer who writes articles on topics such as code, design, management, and life. I hope to engage with fellow tech enthusiasts, discuss, learn, and grow through this platform. Welcome to my digital world.",
   "nav-home": "Home",
   "nav-blog": "Blog",
   "nav-about": "About",

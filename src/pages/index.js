@@ -1,19 +1,25 @@
-import * as React from 'react'
+import React, { useMemo } from 'react'
 import { graphql } from 'gatsby'
-import { Trans, useTranslation } from 'gatsby-plugin-react-i18next'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
 import Layout from '../components/Layout'
+import BlogList from '../components/BlogList'
 import { SEO } from '../components/SEO'
-import { getI18nContent } from '../utils/helper'
+import { getI18nContent, getSimplifiedPosts } from '../utils/helper'
 
-const IndexPage = () => {
+const IndexPage = ({
+  data: {
+    allMarkdownRemark: { nodes },
+  },
+}) => {
   const { t } = useTranslation()
-
+  const simplifiedPosts = useMemo(() => getSimplifiedPosts(nodes), [nodes])
   return (
     <Layout>
-      <p>
-        <Trans>homePage</Trans>
-      </p>
-      <p>{t('homePage')}</p>
+      <div>
+        <h2>{t('homePageWelcomTitle')}</h2>
+        <p>{t('hongePageWelcomDetail')}</p>
+      </div>
+      <BlogList data={simplifiedPosts} />
     </Layout>
   )
 }
@@ -26,6 +32,24 @@ export const query = graphql`
           ns
           data
           language
+        }
+      }
+    }
+    allMarkdownRemark(
+      filter: {
+        fields: { category: { eq: "post" }, locale: { eq: $language } }
+      }
+      sort: { frontmatter: { date: DESC } }
+      limit: 5
+    ) {
+      nodes {
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          date
+          title
         }
       }
     }
