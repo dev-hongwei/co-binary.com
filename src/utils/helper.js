@@ -14,7 +14,7 @@ export const getSimplifiedPosts = (posts) => {
   }))
 }
 
-export const getFormattedDate = (date, lang) => {
+export const getFormattedDate = (date, lang, showFullDate) => {
   const dateArr = date.split('-')
   if (lang === 'en') {
     if (dateArr[1].startsWith('0')) {
@@ -35,7 +35,9 @@ export const getFormattedDate = (date, lang) => {
       'Nov',
       'Dec',
     ]
-    return `${months[monthIndex]} ${dateArr[2]}`
+    return showFullDate
+      ? `${months[monthIndex]} ${dateArr[2]}, ${dateArr[0]}`
+      : `${months[monthIndex]} ${dateArr[2]}`
   }
-  return `${dateArr[1]}-${dateArr[2]}`
+  return showFullDate ? date : `${dateArr[1]}-${dateArr[2]}`
 }

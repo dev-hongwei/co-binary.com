@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import Post from './Post'
 
-const BlogList = ({ data = [], showYears }) => {
+const BlogList = ({ data = [], showYears, showFullDate }) => {
   // get posts by year
   const postsByYear = useMemo(() => {
     const collection = {}
@@ -29,7 +29,7 @@ const BlogList = ({ data = [], showYears }) => {
     return (
       <div className="posts">
         {data.map((node) => (
-          <Post key={node.id} node={node} />
+          <Post key={node.id} node={node} showFullDate={showFullDate} />
         ))}
       </div>
     )
