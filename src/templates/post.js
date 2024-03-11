@@ -8,7 +8,8 @@ const Post = ({ data }) => {
   const { title } = post.frontmatter
   return (
     <Layout>
-      <p>{title}</p>
+      <h2>{title}</h2>
+      <div dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
   )
 }
@@ -32,7 +33,7 @@ export const query = graphql`
       }
     ) {
       id
-      excerpt(pruneLength: 250)
+      html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
