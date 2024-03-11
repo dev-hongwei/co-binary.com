@@ -13,7 +13,7 @@ const Blogs = ({
   const simplifiedPosts = useMemo(() => getSimplifiedPosts(nodes), [nodes])
   return (
     <Layout>
-      <BlogList data={simplifiedPosts} />
+      <BlogList data={simplifiedPosts} showYears />
     </Layout>
   )
 }
