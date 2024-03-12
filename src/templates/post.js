@@ -9,7 +9,10 @@ const Post = ({ data }) => {
   return (
     <Layout>
       <h2>{title}</h2>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <div
+        className="markdown-body"
+        dangerouslySetInnerHTML={{ __html: post.html }}
+      />
     </Layout>
   )
 }
