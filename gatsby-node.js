@@ -6,6 +6,17 @@ const ContentCategory = {
   post: 'post',
 }
 
+const slugify = (str) => {
+  return (
+    str &&
+    str
+      .replace(/[ ]*-[ ]*/g, ' ') // replace '-', starts and ends with 0 - n blank
+      .split(' ')
+      .map((x) => x.toLowerCase())
+      .join('-')
+  )
+}
+
 const getMatchStr = (strContent, regExpression) => {
   let matchStr
   if (strContent) {
@@ -32,13 +43,15 @@ const getMDFileSlug = (category, path) => {
         // starts with 'page, ends with '.', but the match doesn't contain 'page' and '.'
         // design: there is no directory under the page directory, the `/${fileName}` is the slug of the page files
         const regex = /(?<=page)(?!page).*?(?=\.)/g
-        return getMatchStr(path, regex)
+        slug = getMatchStr(path, regex)
+        break
       }
       case ContentCategory.post: {
         // starts with '/post', ends with 'index.', but the match doesn't contain 'index.'
         // design: a leaf directory's name is the post name, there are multiple index.{lang}.md files under the directory
         const regex = /\/post.*?(?=\/index.)/g
-        return getMatchStr(path, regex)
+        slug = getMatchStr(path, regex)
+        break
       }
       default: {
         slug = ''
@@ -46,7 +59,7 @@ const getMDFileSlug = (category, path) => {
       }
     }
   }
-  return slug || ''
+  return slugify(slug || '')
 }
 
 exports.onCreateNode = ({ node, actions }) => {
