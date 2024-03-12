@@ -29,7 +29,22 @@ module.exports = {
         name: `content`,
       },
     },
-    `gatsby-transformer-remark`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+              //linkImagesToOriginal: false,
+              backgroundColor: 'transparent',
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-react-i18next`,
       options: {
