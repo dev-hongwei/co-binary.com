@@ -39,11 +39,14 @@
   --font-size-headering: 18px;
   --font-size-normal: 18px;
   --font-size-footer: 14px;
+  --font-size-info: 14px;
 
   /* Borders */
   --border-color: var(--gray-3);
   --border-color-hover: var(--gray-4);
   --border-radius: 10px;
+  --button-border-color: var(--light-blue);
+  --button-border-hover-color: var(--dark-blue);
 
   /* Elements */
   --color-default-background: white;
@@ -256,7 +259,7 @@ main a:hover {
 }
 
 .main-footer {
-  margin-top: auto;
+  margin-top: var(--space-large);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -334,7 +337,7 @@ h3.home-heading .title {
 }
 button,
 a.button {
-  background: var(--button-background-color);
+  background: var(--gray-0);
   display: inline-flex;
   align-items: center;
   padding: 0.6rem 1rem;
@@ -345,9 +348,26 @@ a.button {
   cursor: pointer;
   font-weight: 500;
   color: var(--font-color-base);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--button-border-color);
   gap: 0.25rem;
   letter-spacing: 0;
   white-space: nowrap;
   transition: transform 0.2s ease-in-out;
+}
+.button:hover {
+  border: 1px solid --button-border-hover-color;
+  background: var(--gray-1);
+  text-decoration: none;
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-large);
+}
+
+.post-info {
+  font-size: var(--font-size-info);
+  display: flex;
+  justify-content: end;
 }

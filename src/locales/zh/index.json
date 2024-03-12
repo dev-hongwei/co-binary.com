@@ -1,6 +1,6 @@
 {
-  "homePageWelcomTitle": "您好，我是刘宏伟。",
-  "hongePageWelcomDetail": "我是一名软件开发者，撰写关于代码、设计、管理、生活等方面的文章。希望通过这个平台，能与广大技术爱好者共同探讨、学习和成长。欢迎来到我的数字世界。",
+  "home-page-welcome-title": "您好，我是刘宏伟。",
+  "home-page-welcome-detail": "我是一名软件开发者，撰写关于代码、设计、管理、生活等方面的文章。希望通过这个平台，能与广大技术爱好者共同探讨、学习和成长。欢迎来到我的数字世界。",
   "nav-home": "主页",
   "nav-blog": "博文",
   "nav-about": "关于",
@@ -10,5 +10,8 @@
   "footer-netlify-info": "托管于: ",
   "home-heading-posts": "最新文章",
   "home-heading-view-all": "查看全部",
-  "building-page-placeholder": "页面创建中"
+  "building-page-placeholder": "页面创建中",
+  "post-update-date": "最后更新时间: ",
+  "post-previous": "上一篇",
+  "post-next": "下一篇"
 }

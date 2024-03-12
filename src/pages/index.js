@@ -17,8 +17,8 @@ const IndexPage = ({
   return (
     <Layout>
       <div>
-        <h2>{t('homePageWelcomTitle')}</h2>
-        <p>{t('hongePageWelcomDetail')}</p>
+        <h2>{t('home-page-welcome-title')}</h2>
+        <p>{t('home-page-welcome-detail')}</p>
       </div>
       <div>
         <Heading title="home-heading-posts" slug="/blog" />

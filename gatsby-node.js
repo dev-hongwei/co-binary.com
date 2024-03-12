@@ -71,6 +71,7 @@ exports.onCreateNode = ({ node, actions }) => {
     const name = path.basename(node.fileAbsolutePath, '.md')
     const isDefault = name === `index.${defaultLanguage}`
     const lang = isDefault ? defaultLanguage : name.split('.')[1]
+
     createNodeField({
       node,
       name: 'category',
@@ -91,6 +92,24 @@ exports.onCreateNode = ({ node, actions }) => {
       name: 'locale',
       value: lang,
     })
+    if (category === ContentCategory.post) {
+      const previousSlug = node.frontmatter.previous
+        ? slugify(`/${category}/${node.frontmatter.previous}`)
+        : ''
+      const nextSlug = node.frontmatter.next
+        ? slugify(`/${category}/${node.frontmatter.next}`)
+        : ''
+      createNodeField({
+        node,
+        name: 'previousSlug',
+        value: previousSlug,
+      })
+      createNodeField({
+        node,
+        name: 'nextSlug',
+        value: nextSlug,
+      })
+    }
   }
 }
 
