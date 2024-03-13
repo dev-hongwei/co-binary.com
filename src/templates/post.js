@@ -16,7 +16,7 @@ const Post = ({ data }) => {
     <Layout>
       <h2>{title}</h2>
       <i className="post-info">
-        {t('post-update-date')} {formattedDate}
+        {t('post-published-at')} {formattedDate}
       </i>
       <div
         className="markdown-body"
