@@ -9,8 +9,8 @@ const Header = () => {
     setLangSwitcherWidth(newWidth)
   }
   return (
-    <header className="main-header">
-      <div className="main-header-container">
+    <header className="layout-header">
+      <div className="layout-header-container">
         <Navigation otherComponentsWidth={langSwitcherWidth} />
         <LanguageSwitcher onWidthChange={handleLangSwitcherWidthChange} />
       </div>

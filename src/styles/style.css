@@ -56,7 +56,7 @@
   --color-second-level-nav-item-background: white;
   --color-second-level-nav-item-bottom: var(--gray-3);
 
-  /* Sizs */
+  /* Sizes */
   --space-small: 5px;
   --space-small-negative: -5px;
   --space-medium: 10px;
@@ -99,19 +99,19 @@ a {
   color: var(--normal-blue);
 }
 
-.whole-layout {
+.layout-whole {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
 /* Header */
-.main-header {
+.layout-header {
   background-color: var(--color-binner-background);
   border-bottom: 1px solid var(--color-binner-bottom);
   font-size: var(--font-size-headering);
 }
-.main-header-container {
+.layout-header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -119,7 +119,7 @@ a {
   margin: 0 auto;
 }
 @media screen and (max-width: 700px) {
-  .main-header-container {
+  .layout-header-container {
     width: 100%;
   }
 }
@@ -236,29 +236,29 @@ a {
   right: 0;
 }
 
-main {
+.layout-main {
   flex-grow: 1;
-  padding: 0 20px;
+  padding: 0 var(--space-large);
   width: var(--width-content-container);
   margin: 0 auto;
 }
 @media screen and (max-width: 700px) {
-  main {
+  .layout-main {
     width: 100%;
   }
 }
-main ul {
+.layout-main ul {
   list-style: disc;
 }
-main a:visited {
+.layout-main a:visited {
   color: var(--normal-blue);
 }
-main a:hover {
+.layout-main a:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.main-footer {
+.layout-footer {
   margin-top: var(--space-large);
   display: flex;
   flex-direction: column;
@@ -268,7 +268,7 @@ main a:hover {
   font-size: var(--font-size-footer);
 }
 
-.main-footer .nav-item {
+.layout-footer .nav-item {
   display: flex;
   align-items: center;
 }

@@ -7,9 +7,9 @@ import '../styles/github-markdown-light.css'
 
 const Layout = ({ children }) => {
   return (
-    <div className="whole-layout">
+    <div className="layout-whole">
       <Header />
-      <main>{children}</main>
+      <main className="layout-main">{children}</main>
       <Footer />
     </div>
   )

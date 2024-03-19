@@ -4,7 +4,7 @@ import { useTranslation } from 'gatsby-plugin-react-i18next'
 const Footer = () => {
   const { t } = useTranslation()
   return (
-    <footer className="main-footer">
+    <footer className="layout-footer">
       <ul className="nav">
         <li className="nav-item">
           <i>{t(`footer-github-info`)}</i>
