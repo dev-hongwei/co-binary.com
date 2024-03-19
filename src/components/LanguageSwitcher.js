@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import { Link, useI18next, useTranslation } from 'gatsby-plugin-react-i18next'
-import LanugageDictionary from '../common/LanguageDictionary'
 
 const LanguageSwitcher = ({ onWidthChange }) => {
   const { languages, originalPath, i18n } = useI18next()
@@ -18,7 +17,7 @@ const LanguageSwitcher = ({ onWidthChange }) => {
     <ul ref={ref} className="nav language-switcher">
       <li className="nav-item">
         <a href="#">
-          <img src="/images/globe.svg" alt={t(`nav-more`)} />
+          <img src="/images/globe.svg" alt={t(`nav-globe`)} />
         </a>
         <div className="sub-nav-container">
           <ul className="sub-nav">
@@ -32,7 +31,7 @@ const LanguageSwitcher = ({ onWidthChange }) => {
                       display: i18n.resolvedLanguage === lng ? 'none' : 'block',
                     }}
                   >
-                    {LanugageDictionary[lng]}
+                    {t(lng)}
                   </Link>
                 </li>
               )
