@@ -55,6 +55,8 @@
   --color-nav-item-highlight: var(--dark-blue);
   --color-second-level-nav-item-background: white;
   --color-second-level-nav-item-bottom: var(--gray-3);
+  --color-highlight-code-line-background: #feb;
+  --color-highlight-code-line-border: #f99;
 
   /* Sizes */
   --space-small: 5px;
@@ -370,4 +372,25 @@ a.button {
   font-size: var(--font-size-info);
   display: flex;
   justify-content: end;
+}
+
+/* Markdown */
+.markdown-body ol {
+  padding-left: 1em !important;
+}
+.gatsby-highlight-code-line {
+  background-color: var(--color-highlight-code-line-background);
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid var(--color-highlight-code-line-border);
+}
+.gatsby-remark-prismjs-copy-button{
+  color: var(--gray-9);
+}
+.gatsby-remark-prismjs-copy-button-container {
+  left: 0;
+  padding-right: var(--space-small);
 }
