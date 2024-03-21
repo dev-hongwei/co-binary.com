@@ -1,6 +1,8 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+
+// import language related configuration
 const { languages, defaultLanguage } = require('./src/common/Languages')
 
 module.exports = {
@@ -16,13 +18,6 @@ module.exports = {
   plugins: [
     // css plugin
     'gatsby-plugin-postcss',
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/locales`,
-        name: `locale`,
-      },
-    },
 
     // multi-language support
     {
@@ -30,8 +25,8 @@ module.exports = {
       // use name to reference it.
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content`,
-        name: `content`,
+        path: `${__dirname}/src/locales`,
+        name: `locale`,
       },
     },
     {
@@ -57,6 +52,13 @@ module.exports = {
     },
 
     // markdown
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content`,
+        name: `content`,
+      },
+    },
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,

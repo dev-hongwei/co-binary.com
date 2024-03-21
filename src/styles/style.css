@@ -388,7 +388,7 @@ a.button {
   border-left: 0.25em solid var(--color-highlight-code-line-border);
 }
 .gatsby-remark-prismjs-copy-button{
-  color: var(--gray-9);
+  color: var(--gray-9) !important;
 }
 .gatsby-remark-prismjs-copy-button-container {
   left: 0;
