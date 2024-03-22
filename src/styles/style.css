@@ -117,12 +117,12 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: var(--width-content-container);
+  width: 100%;
   margin: 0 auto;
 }
-@media screen and (max-width: 700px) {
+@media screen and (min-width: 768px) {
   .layout-header-container {
-    width: 100%;
+    width: var(--width-content-container)
   }
 }
 /* Navigation */
@@ -241,12 +241,12 @@ a {
 .layout-main {
   flex-grow: 1;
   padding: 0 var(--space-large);
-  width: var(--width-content-container);
+  width: 100%;
   margin: 0 auto;
 }
-@media screen and (max-width: 700px) {
+@media screen and (min-width: 768px) {
   .layout-main {
-    width: 100%;
+    width: var(--width-content-container);
   }
 }
 .layout-main ul {
@@ -311,15 +311,15 @@ a.post h3 {
 }
 
 a.post time {
-  display: block;
+  display: none;
   color: var(--post-time-color);
   font-size: 0.9rem;
   white-space: nowrap;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (min-width: 768px) {
   a.post time {
-    display: none;
+    display: block;
   }
 }
 
@@ -392,5 +392,5 @@ a.button {
 }
 .gatsby-remark-prismjs-copy-button-container {
   left: 0;
-  padding-right: var(--space-small);
+  padding-right: var(--space-small) !important;
 }
