@@ -15,6 +15,18 @@ const navigationItems = [
     id: 'nav-about',
     path: '/about',
   },
+  {
+    id: 'nav-about1',
+    path: '/about',
+  },
+  {
+    id: 'nav-about2',
+    path: '/about',
+  },
+  {
+    id: 'nav-about3',
+    path: '/about',
+  },
 ]
 
 const Navigation = ({ otherComponentsWidth }) => {
@@ -53,9 +65,10 @@ const Navigation = ({ otherComponentsWidth }) => {
   useEffect(() => {
     // calculate visible navigation items
     let itemsToShow = []
-    const navbarWidth = windowWidth - otherComponentsWidth
 
     if (windowWidth >= Threshold.screenWidth) {
+      const headerContainerWidth = windowWidth * 0.6
+      const navbarWidth = headerContainerWidth - otherComponentsWidth
       let addedItemWidth = 0
       const BreakException = {}
       try {

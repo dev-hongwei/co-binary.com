@@ -391,6 +391,7 @@ a.button {
   color: var(--gray-9) !important;
 }
 .gatsby-remark-prismjs-copy-button-container {
-  left: 0;
+  left: 0 !important;
+  top: 30px !important;
   padding-right: var(--space-small) !important;
 }
