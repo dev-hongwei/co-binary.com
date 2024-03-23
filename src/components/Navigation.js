@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Link, Trans, useTranslation } from 'gatsby-plugin-react-i18next'
-import Threshold from '../common/Threshold'
+import { Link, useTranslation } from 'gatsby-plugin-react-i18next'
+import Consts from '../common/Consts'
 
 const navigationItems = [
   {
@@ -15,36 +15,34 @@ const navigationItems = [
     id: 'nav-about',
     path: '/about',
   },
-  {
-    id: 'nav-about1',
-    path: '/about',
-  },
-  {
-    id: 'nav-about2',
-    path: '/about',
-  },
-  {
-    id: 'nav-about3',
-    path: '/about',
-  },
 ]
 
-const Navigation = ({ otherComponentsWidth }) => {
+const Navigation = () => {
   const { t } = useTranslation()
+  const navItemRefs = useRef([])
+  const subNavContainerRef = useRef(null)
+
+  const handleSubNavItemClick = () => {
+    subNavContainerRef.current.style.display = 'none'
+  }
+
+  const handleNavMoreItemMouseOver = () => {
+    subNavContainerRef.current.style.display = 'block'
+  }
+
+  // initialize the window's width
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== 'undefined' ? window.innerWidth : 0,
   )
-  const [showMore, setShowMore] = useState(false)
   const [visibleItems, setVisibleItems] = useState(navigationItems)
-  const navItemRefs = useRef([])
-  const navMoreReseveWidth = 110
 
   useEffect(() => {
-    // set window width
+    // add event listener of window's resize to update the value of windowWidth
     if (typeof window === 'undefined') {
       return
     }
     const handleResize = () => {
+      // update the windows' width
       setWindowWidth(window.innerWidth)
     }
 
@@ -66,9 +64,9 @@ const Navigation = ({ otherComponentsWidth }) => {
     // calculate visible navigation items
     let itemsToShow = []
 
-    if (windowWidth >= Threshold.screenWidth) {
-      const headerContainerWidth = windowWidth * 0.6
-      const navbarWidth = headerContainerWidth - otherComponentsWidth
+    if (windowWidth >= Consts.width_ScreenThreshold) {
+      const navbarWidth =
+        windowWidth * Consts.width_ScreenRatio - Consts.width_LanguageSwitcher
       let addedItemWidth = 0
       const BreakException = {}
       try {
@@ -76,7 +74,7 @@ const Navigation = ({ otherComponentsWidth }) => {
           addedItemWidth += navItem.width
           if (
             (index + 1 < navigationItems.length &&
-              addedItemWidth > navbarWidth - navMoreReseveWidth) ||
+              addedItemWidth + Consts.width_NavMoreItem > navbarWidth) ||
             (index + 1 == navigationItems.length &&
               addedItemWidth > navbarWidth)
           ) {
@@ -90,9 +88,8 @@ const Navigation = ({ otherComponentsWidth }) => {
         }
       }
     }
-    setShowMore(itemsToShow.length < navigationItems.length)
     setVisibleItems(itemsToShow)
-  }, [windowWidth, otherComponentsWidth])
+  }, [windowWidth])
 
   return (
     <ul className="nav">
@@ -105,13 +102,16 @@ const Navigation = ({ otherComponentsWidth }) => {
           >
             <Link to={navItem.path}>
               <img src={`/images/${navItem.id}.svg`} alt={t(`${navItem.id}`)} />
-              <Trans>{`${navItem.id}`}</Trans>
+              {t(`${navItem.id}`)}
             </Link>
           </li>
         )
       })}
-      {showMore && (
-        <li className="nav-item nav-item-more">
+      {visibleItems.length < navigationItems.length && (
+        <li
+          className="nav-item nav-item-more"
+          onMouseOver={handleNavMoreItemMouseOver}
+        >
           {visibleItems.length === 0 && (
             <a href="#">
               <img
@@ -127,11 +127,15 @@ const Navigation = ({ otherComponentsWidth }) => {
               <img src="/images/nav-more.svg" alt={t(`nav-more`)} />
             </a>
           )}
-          <div className="sub-nav-container">
+          <div className="sub-nav-container" ref={subNavContainerRef}>
             <ul className="sub-nav">
               {navigationItems.slice(visibleItems.length).map((navItem) => {
                 return (
-                  <li key={navItem.id} className="sub-nav-item">
+                  <li
+                    key={navItem.id}
+                    className="sub-nav-item"
+                    onClick={handleSubNavItemClick}
+                  >
                     <Link to={navItem.path}>
                       <img
                         className="sub-nav-reverse-img"
@@ -143,7 +147,7 @@ const Navigation = ({ otherComponentsWidth }) => {
                         src={`/images/${navItem.id}.svg`}
                         alt={t(`${navItem.id}`)}
                       />
-                      <Trans>{`${navItem.id}`}</Trans>
+                      {t(`${navItem.id}`)}
                     </Link>
                   </li>
                 )

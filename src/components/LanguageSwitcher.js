@@ -1,20 +1,12 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { Link, useI18next, useTranslation } from 'gatsby-plugin-react-i18next'
 
-const LanguageSwitcher = ({ onWidthChange }) => {
+const LanguageSwitcher = () => {
   const { languages, originalPath, i18n } = useI18next()
   const { t } = useTranslation()
-  const ref = useRef(null)
-
-  useEffect(() => {
-    if (ref.current) {
-      const newWidth = ref.current.offsetWidth
-      onWidthChange(newWidth)
-    }
-  }, [onWidthChange])
 
   return (
-    <ul ref={ref} className="nav language-switcher">
+    <ul className="nav language-switcher">
       <li className="nav-item">
         <a href="#">
           <img src="/images/globe.svg" alt={t(`nav-globe`)} />

@@ -66,6 +66,7 @@
   --space-large: 20px;
   --space-large-negative: -20px;
 
+  /* // The available screen horizontal display area ratio, it must be same with javascript const: Consts.width_NavMoreItem */
   --width-content-container: 60vw;
 }
 
@@ -122,7 +123,7 @@ a {
 }
 @media screen and (min-width: 768px) {
   .layout-header-container {
-    width: var(--width-content-container)
+    width: var(--width-content-container);
   }
 }
 /* Navigation */
@@ -183,9 +184,6 @@ a {
 }
 .nav-item-more:hover {
   background-color: var(--color-nav-item-highlight);
-}
-.nav-item-more:hover .sub-nav-container {
-  display: block;
 }
 .sub-nav {
   padding: 0;
@@ -387,7 +385,7 @@ a.button {
   padding-left: 0.75em;
   border-left: 0.25em solid var(--color-highlight-code-line-border);
 }
-.gatsby-remark-prismjs-copy-button{
+.gatsby-remark-prismjs-copy-button {
   color: var(--gray-9) !important;
 }
 .gatsby-remark-prismjs-copy-button-container {
