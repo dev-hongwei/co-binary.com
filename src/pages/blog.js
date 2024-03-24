@@ -5,12 +5,12 @@ import Layout from '../components/Layout'
 import BlogList from '../components/BlogList'
 import { getI18nContent, getSimplifiedPosts } from '../utils/helper'
 
-const Blogs = ({
+const Blog = ({
   data: {
-    allMarkdownRemark: { nodes },
+    allMarkdownRemark: { edges },
   },
 }) => {
-  const simplifiedPosts = useMemo(() => getSimplifiedPosts(nodes), [nodes])
+  const simplifiedPosts = useMemo(() => getSimplifiedPosts(edges), [edges])
   return (
     <Layout>
       <BlogList data={simplifiedPosts} showYears />
@@ -35,21 +35,23 @@ export const query = graphql`
       }
       sort: { frontmatter: { date: DESC } }
     ) {
-      nodes {
-        id
-        fields {
-          slug
-        }
-        frontmatter {
-          date
-          title
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            date
+            title
+          }
         }
       }
     }
   }
 `
 
-export default Blogs
+export default Blog
 
 export const Head = ({ data }) => {
   const title = getI18nContent(data, 'nav-blog')

@@ -9,11 +9,11 @@ import { getI18nContent, getSimplifiedPosts } from '../utils/helper'
 
 const IndexPage = ({
   data: {
-    allMarkdownRemark: { nodes },
+    allMarkdownRemark: { edges },
   },
 }) => {
   const { t } = useTranslation()
-  const simplifiedPosts = useMemo(() => getSimplifiedPosts(nodes), [nodes])
+  const simplifiedPosts = useMemo(() => getSimplifiedPosts(edges), [edges])
   return (
     <Layout>
       <div>
@@ -46,14 +46,16 @@ export const query = graphql`
       sort: { frontmatter: { date: DESC } }
       limit: 5
     ) {
-      nodes {
-        id
-        fields {
-          slug
-        }
-        frontmatter {
-          date
-          title
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            date
+            title
+          }
         }
       }
     }

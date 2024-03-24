@@ -40,9 +40,9 @@ const getMDFileSlug = (category, path) => {
   if (path) {
     switch (category) {
       case ContentCategory.page: {
-        // starts with 'page, ends with '.', but the match doesn't contain 'page' and '.'
+        // starts with 'page, ends with 'index.', but the match doesn't contain 'page' and 'index.'
         // design: there is no directory under the page directory, the `/${fileName}` is the slug of the page files
-        const regex = /(?<=page)(?!page).*?(?=\.)/g
+        const regex = /(?<=page)(?!page).*?(?=\/index.)/g
         slug = getMatchStr(path, regex)
         break
       }
@@ -143,7 +143,7 @@ exports.createPages = async (props) => {
   // create pages
   const all = result.data.allMarkdownRemark.edges
   all.forEach((page) => {
-    const { category, slug, isDefault, locale } = page.node.fields
+    const { category, slug, isDefault } = page.node.fields
     const pageData = {
       path: `${slug}`,
       component:
@@ -153,10 +153,7 @@ exports.createPages = async (props) => {
         slug,
       },
     }
-    if (
-      (category === ContentCategory.page && locale === defaultLanguage) ||
-      (category === ContentCategory.post && isDefault)
-    ) {
+    if (isDefault) {
       createPage(pageData)
     }
   })

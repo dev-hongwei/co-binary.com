@@ -7,10 +7,10 @@ export const getI18nContent = (i18nData, key) => {
 
 export const getSimplifiedPosts = (posts) => {
   return posts.map((post) => ({
-    id: post.id,
-    slug: post.fields.slug,
-    date: post.frontmatter.date,
-    title: post.frontmatter.title,
+    id: post.node.id,
+    slug: post.node.fields.slug,
+    date: post.node.frontmatter.date,
+    title: post.node.frontmatter.title,
   }))
 }
 
