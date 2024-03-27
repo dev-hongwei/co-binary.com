@@ -181,6 +181,7 @@ a {
   padding: 15px 0;
   background-color: var(--color-second-level-nav-item-background);
   border: 1px solid var(--color-second-level-nav-item-bottom);
+  z-index: 1;
 }
 .nav-item-more:hover {
   background-color: var(--color-nav-item-highlight);
